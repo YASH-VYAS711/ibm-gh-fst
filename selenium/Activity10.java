@@ -24,6 +24,7 @@ public class Activity10 {
 	    WebElement clickButton = driver.findElement(By.xpath("//h1[contains(text(),'Cargo.lock')]"));
 	    WebElement tomlButton = driver.findElement(By.xpath("//h1[contains(text(),'Cargo.toml')]"));
 	    WebElement srcButton = driver.findElement(By.xpath("//h1[contains(text(),'src')]"));
+	    WebElement targetButton = driver.findElement(By.xpath("//h1[contains(text(),'target')]"));
 	    clickButton.click();
 	    System.out.println("Text: "+text.getText());
 	    builder.moveToElement(tomlButton).build().perform();
@@ -32,7 +33,12 @@ public class Activity10 {
 	    builder.moveToElement(srcButton).build().perform(); 
 	    builder.doubleClick(srcButton).build().perform();// Close the browser
 	    System.out.println("Text: "+text.getText());
-	    
+	    builder.contextClick(targetButton).build().perform();
+
+	    WebElement openButton = driver.findElement(By.xpath("//span[contains(text(),'Open')]"));
+	    openButton.click();
+	    builder.pause(500).build().perform();
+	    System.out.println("Text: "+text.getText());
 	    // Feel free to comment out the line below
 	    // so it doesn't close too quickly
 	    driver.quit();
